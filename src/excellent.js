@@ -1441,10 +1441,7 @@
         this.findOne = function (name) {
             var a = this.find(name);
             if (a.length !== 1) {
-                var s = 'Expected a single controller from findOne(' + jStr(name) + '), but found ' + a.length + '.';
-                if(a.length !== 0) s = s + ' First found controller will be returned. Better use ".find()" instead!';
-                /* eslint-disable-next-line no-console */
-                console.warn ? console.warn(s) : console.log(s);
+                throw new Error('Expected a single controller from findOne(' + jStr(name) + '), but found ' + a.length + '.');
             }
             return a[0];
         };
@@ -1955,10 +1952,7 @@
     EController.prototype.findOne = function (name) {
         var a = this.find(name);
         if (a.length !== 1) {
-            var s = 'Expected a single controller from ' + jStr(this.name) + '.findOne(' + jStr(name) + '), but found ' + a.length + '.';
-            if(a.length !== 0) s = s + ' First found controller will be returned. Better use ".find()" instead!';
-            /* eslint-disable-next-line no-console */
-            console.warn ? console.warn(s) : console.log(s);
+            throw new Error('Expected a single controller from ' + jStr(this.name) + '.findOne(' + jStr(name) + '), but found ' + a.length + '.');
         }
         return a[0];
     };
